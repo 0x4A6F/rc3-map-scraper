@@ -5,9 +5,8 @@ import sys
 
 # get this from your browser (see exneuland links)
 token = ""
-first_slug = "/rc3_21/lebkuchis/cellar.json"
-# first_slug = "rc3_21/lobby/main.json"
 first_slug = sys.argv[1] if len(sys.argv) == 2 else "rc3_21/lobby/main.json"
+managed_slugs = []
 dldir = "maps"
 from os.path import join,dirname,basename, normpath
 from os import makedirs
@@ -56,7 +55,7 @@ def download_map(url:str,slug:str):
 
     #with open('managed_slugs.json','w+') as f:
     #    json.dump(managed_slugs,f)
-    
+
     # TODO: persist current exits so we can actually continue scraping
     for i in list(find_exits(mapdata,slug)):
         if i is not slug:
